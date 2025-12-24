@@ -1,0 +1,14 @@
+{
+  "name": "simple-ai-agent",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/venv/bin/python"
+      }
+    }
+  },
+  "postCreateCommand": "uv venv && . .venv/bin/activate && uv pip install -e ."
+}
