@@ -7,12 +7,12 @@ def call_llm(prompt: str) -> str:
     Stateless LLM call: input string -> output string.
     Uses an OpenAI-compatible endpoint for simplicity.
     """
-    api_key = os.getenv("LLM_API_KEY")
+    api_key = os.getenv("OPEN_AI_API_KEY")
     base_url = "https://api.openai.com"
     model = "gpt-4.1"
 
     if not api_key:
-        raise RuntimeError("Set LLM_API_KEY in your environment.")
+        raise RuntimeError("Set OPEN_AI_API_KEY in your environment.")
 
     payload = {
         "model": model,
