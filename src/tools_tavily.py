@@ -15,11 +15,13 @@ def tavily_search(query: str) -> str:
         "max_results": 5,
     }
 
+    # Tavily検索APIを呼び出し
     with httpx.Client(timeout=30) as client:
         resp = client.post("https://api.tavily.com/search", json=payload)
         resp.raise_for_status()
         data = resp.json()
 
+    # 検索結果を整形
     results = data.get("results", [])
     lines = []
     for item in results:
@@ -28,4 +30,5 @@ def tavily_search(query: str) -> str:
         content = item.get("content", "")
         lines.append(f"- {title}\n  {url}\n  {content}")
 
+    # 結果を文字列として返す
     return "\n".join(lines).strip()

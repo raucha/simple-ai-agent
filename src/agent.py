@@ -8,15 +8,16 @@ from .tools_python import TOOL_NAME as PYTHON_REPL_NAME
 from .tools_python import python_repl
 from .tools_tavily import TOOL_NAME as TAVILY_NAME
 from .tools_tavily import tavily_search
+from datetime import datetime
 
+# tool名称と実装関数のマッピング
 TOOLS = {
     TAVILY_NAME: tavily_search,
     PYTHON_REPL_NAME: python_repl,
 }
 
-from datetime import datetime
 
-
+# ツール呼び出しを繰り返して目的達成させるためのプロンプト
 SYSTEM_PROMPT = """あなたは親切なAIアシスタントです。
 必要に応じてtoolを呼び出し、十分な情報が揃ったら最終回答してください。
 以下にユーザー入力と前回までのツール実行結果が記載されたscratchpadが与えられます。
