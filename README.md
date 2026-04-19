@@ -23,28 +23,65 @@ uv run python -m src.agent "明日の天気を教えて"
 ```
 
 ## 実行結果例
-<!-- <details>
-<summary>フィボナッチ数を計算させる</summary>
+<details>
+<summary>プロンプト: "フィボナッチ数の30番目の数字を計算して"</summary>
 
 ```bash
 uv run python -m src.agent "フィボナッチ数の30番目の数字を計算して"
+
+==== Start STEP 1 ====
+Processing tool action.
+TOOL CALL: python_repl(def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+print(fibonacci(30)))
+TOOL OUTPUT (preview): 832040
+
+==== Start STEP 2 ====
+Processing final action.
+フィボナッチ数列の30番目の数字は832040です。
 ```
 
 </details>
 
 
 <details>
-<summary>明日の天気を教えて</summary>
+<summary>プロンプト: "2つのニュースサイトを訪問して、それぞれのトップニュースを取得して。またその結果を200文字のレポートにまとめて"</summary>
 
 ```bash
-uv run python -m src.agent "明日の天気を教えて"
+uv run python -m src.agent "2つのニュースサイトを訪問して、それぞれのトップニュースを取得して。またその結果を200文字のレポートにまとめて"
+
+==== Start STEP 1 ====
+Processing tool action.
+TOOL CALL: tavily_search(主要ニュースサイトのトップニュース 2025年12月24日)
+TOOL OUTPUT (preview): - 2025年12月24日の記事一覧
+  https://w
+
+==== Start STEP 2 ====
+Processing tool action.
+TOOL CALL: tavily_search(読売新聞 トップニュース 2025年12月24日)
+TOOL OUTPUT (preview): - 読売新聞 - 12月 24, 2025
+  https:
+
+==== Start STEP 3 ====
+Processing final action.
+2025年12月24日の主要ニュースサイト（朝日新聞・読売新聞）のトップニュースは以下の通りです。
+
+朝日新聞では、トルコでのジェット機墜落事故やウクライナ情勢、国内では出生数の減少や高額療養費の見直し、外国人労働者政策などが大きく報じられています。
+
+読売新聞では、国内金価格の史上最高値更新、電通過労死事件から10年の母親の訴え、高市内閣の高支持率、能登半島地震の孤立集落問題などが注目されています。
+
+両紙とも国際情勢と国内の社会・経済問題を幅広く取り上げており、年末らしい総括や回顧記事も目立ちました。
+
 ```
 
-</details> -->
+</details>
 
 
 <details>
-<summary>モンテカルロ法で確率計算</summary>
+<summary>プロンプト: "サイコロを 2 個振って合計 が 12 以上になる確率を厳密計算とモンテカルロ法の両方で求めて"</summary>
 
 ```bash
 uv run python -m src.agent "サイコロを 2 個振って合計 が 12 以上になる確率を厳密計算とモンテカルロ法の両方で求めて"
@@ -100,7 +137,7 @@ Processing final action.
 
 
 <details>
-<summary>irisのデータセットを取得して画像として可視化</summary>
+<summary>プロンプト: "ユリのデータセットを取得して、各特徴量をヒストグラムとして画像化して"</summary>
 
 ```bash
 uv add matplotlib pandas
